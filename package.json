@@ -1,0 +1,14 @@
+{
+  "name": "beachball-radmin-vpn",
+  "version": "1.0.0",
+  "description": "Two-player network Beachball game for LAN/Radmin VPN play.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check public/game.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {}
+}
