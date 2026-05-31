@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beachball LAN</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel intro" id="introPanel">
+        <div class="help">
+          <h2>Как играть</h2>
+          <p><kbd>A</kbd>/<kbd>D</kbd> — влево/вправо, <kbd>W</kbd> — прыжок, <kbd>S</kbd> — быстро вниз.</p>
+          <p>Быстро нажми два раза любую клавишу движения, чтобы сделать <strong>dash</strong>.</p>
+          <p>Если мяч упал на твоей половине — соперник получает очко. Игра до <strong>13</strong>.</p>
+        </div>
+        <form class="join-card" id="joinForm">
+          <h1>🏐 Beachball</h1>
+          <p>Запусти сервер на одном ПК, второй игрок открывает адрес сервера через Radmin VPN.</p>
+          <label>
+            Адрес сервера
+            <input id="serverUrl" autocomplete="off" placeholder="ws://26.x.x.x:3000" />
+          </label>
+          <label>
+            Комната
+            <input id="roomCode" value="BEACH" maxlength="20" />
+          </label>
+          <label>
+            Сторона
+            <select id="sideSelect">
+              <option value="auto">Авто</option>
+              <option value="left">Левая</option>
+              <option value="right">Правая</option>
+            </select>
+          </label>
+          <button type="submit">Играть</button>
+          <small id="joinHint">Для локального теста открой две вкладки.</small>
+        </form>
+        <div class="help">
+          <h2>Radmin VPN</h2>
+          <ol>
+            <li>Оба игрока подключаются к одной сети Radmin VPN.</li>
+            <li>Хост запускает <code>npm start</code>.</li>
+            <li>Второй игрок открывает <code>http://RADMIN-IP:3000</code>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="hud">
+        <div><span class="dot blue"></span> Игрок 1: <strong id="scoreLeft">0</strong></div>
+        <div class="status" id="statusText">Не подключено</div>
+        <div><span class="dot red"></span> Игрок 2: <strong id="scoreRight">0</strong></div>
+      </section>
+
+      <canvas id="game" width="1280" height="720" aria-label="Beachball game field"></canvas>
+      <button class="restart" id="restartButton" hidden>Новый матч</button>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
